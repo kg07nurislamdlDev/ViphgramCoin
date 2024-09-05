@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="header">
+        <h1 id="username">PlayerName</h1>
+        <p id="rank">Rank: Gold</p>
+        <p id="coins">Coins: 1000</p>
+    </div>
+    <div class="tabs">
+        <div class="active">Leaderboards</div>
+    </div>
+    <div class="leaderboard" id="leaderboard"></div>
+    <div class="nav">
+        <a href="templates/index.html">Home</a>
+        <a href="templates/friends.html">Friends</a>
+        <a href="templates/tasks.html">Tasks</a>
+        <a href="templates/profile.html">Profile</a>
+    </div>
+    
+    <script src="https://telegram.org/js/telegram-widget.js?7"
+            data-telegram-login="YOUR_BOT_USERNAME"
+            data-size="large"
+            data-radius="10"
+            data-auth-url="YOUR_AUTH_URL"
+            data-request-access="write"></script>
+    
+    <script>
+        // Telegram Web App API integration
+        document.addEventListener('DOMContentLoaded', function() {
+            const username = 'PlayerName'; // Replace with dynamic data
+            const rank = 'Gold'; // Replace with dynamic data
+            const coins = 1000; // Replace with dynamic data
+            
+            document.getElementById('username').textContent = username;
+            document.getElementById('rank').textContent = `Rank: ${rank}`;
+            document.getElementById('coins').textContent = `Coins: ${coins}`;
+            
+            // Sample leaderboard data
+            const leaderboardData = [
+                { name: 'Alice', coins: 1500 },
+                { name: 'Bob', coins: 1200 },
+                { name: 'Charlie', coins: 1100 }
+            ];
+            
+            const leaderboard = document.getElementById('leaderboard');
+            leaderboardData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.classList.add('leaderboard-item');
+                div.innerHTML = `
+                    <div class="details">${index + 1}. ${item.name}</div>
+                    <div class="coins">${item.coins}</div>
+                `;
+                leaderboard.appendChild(div);
+            });
+            
+            // Handling Telegram Web App
+            if (window.TelegramWebApp) {
+                window.TelegramWebApp.ready();
+                window.TelegramWebApp.onEvent('mainButtonClicked', function() {
+                    // Handle the button click event
+                    console.log('Main button clicked');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
