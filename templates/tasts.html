@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Tasks</h1>
+        <p>Complete tasks and earn coins!</p>
+        <!-- Төмөндө мисал катары тапшырмалар көрсөтүлгөн -->
+        <div class="task">
+            <div class="details">
+                <p>Subscribe to Viphgram Coin Announcements Telegram channel</p>
+            </div>
+            <div class="reward">+50</div>
+            <button>START</button>
+        </div>
+        <div class="task">
+            <div class="details">
+                <p>Subscribe to Viphgram Coin Announcements YouTube channel</p>
+            </div>
+            <div class="reward">+30</div>
+            <button>START</button>
+        </div>
+        <div class="task">
+            <div class="details">
+                <p>Subscribe to Viphgram Coin Announcements Instagram channel</p>
+            </div>
+            <div class="reward">+30</div>
+            <button>START</button>
+        </div>
+        <div class="task">
+            <div class="details">
+                <p>Join Viphgram Coin Announcements Telegram chat</p>
+            </div>
+            <div class="reward">+15</div>
+            <button>START</button>
+        </div>
+        <div class="task">
+            <div class="details">
+                <p>Invite 5 friends</p>
+            </div>
+            <div class="reward">+70</div>
+            <button>START</button>
+        </div>
+        <div class="task">
+            <div class="details">
+                <p>Invite 10 friends</p>
+            </div>
+            <div class="reward">+150</div>
+            <button>START</button>
+        </div>
+    </div>
+    <div class="nav">
+        <a href="templates/index.html">Home</a>
+        <a href="templates/friends.html">Friends</a>
+        <a href="templates/tasks.html">Tasks</a>
+        <a href="templates/profile.html">Profile</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tasks = [
+                { description: 'Subscribe to Viphgram Coin Announcements Telegram channel', reward: 50 },
+                { description: 'Subscribe to Viphgram Coin Announcements YouTube channel', reward: 30 },
+                { description: 'Subscribe to Viphgram Coin Announcements Instagram channel', reward: 30 },
+                { description: 'Join Viphgram Coin Announcements Telegram chat', reward: 15 },
+                { description: 'Invite 5 friends', reward: 70 },
+                { description: 'Invite 10 friends', reward: 150 }
+            ];
+    
+            const taskContainer = document.querySelector('.container');
+            tasks.forEach(task => {
+                const div = document.createElement('div');
+                div.classList.add('task');
+                div.innerHTML = `
+                    <div class="details">
+                        <p>${task.description}</p>
+                    </div>
+                    <div class="reward">+${task.reward}</div>
+                    <button>START</button>
+                `;
+                taskContainer.appendChild(div);
+            });
+    
+            document.querySelectorAll('.task button').forEach(button => {
+                button.addEventListener('click', function() {
+                    alert('Task started!'); // Бул жерде тапшырманы аткаруу логикасы болушу мүмкүн
+                });
+            });
+        });
+    </script>
+    
+</body>
+
+</html>
