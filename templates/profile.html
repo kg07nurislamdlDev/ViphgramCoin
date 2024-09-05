@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <div class="header">
+        <h1>Profile</h1>
+    </div>
+    <div class="profile">
+        <img src="avatar.png" alt="Avatar">
+        <p><!-- бул жерде оюнчунун Телеграм first_name жайгашат --></p>
+        <p><!-- Бул жерде оюнчунун @username'и жайгашат --></p>
+    </div>
+    <div class="stats">
+        <p><b>Balance:</b><b><!-- Бул жерде оюнчунун балансы жайгашкан --></b></p>
+        <p><b>Friends:</b> <b><!-- Бул жерде оюнчунун чакырган досторунун саны --></b></p>
+        <p><b>Profit from friends:</b><b><!-- Бул жерде достордун түшкөн пайда --></b></p>
+    </div>
+    <div class="nav">
+        <a href="templates/index.html">Home</a>
+        <a href="templates/friends.html">Friends</a>
+        <a href="templates/tasks.html">Tasks</a>
+        <a href="templates/profile.html">Profile</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const profile = {
+                firstName: 'John',
+                username: '@john_doe',
+                balance: 500,
+                friendsCount: 10,
+                profitFromFriends: 100
+            };
+
+            document.querySelector('.profile p:nth-of-type(1)').textContent = `Name: ${profile.firstName}`;
+            document.querySelector('.profile p:nth-of-type(2)').textContent = `Username: ${profile.username}`;
+            document.querySelector('.stats p:nth-of-type(1) b').textContent = profile.balance;
+            document.querySelector('.stats p:nth-of-type(2) b').textContent = profile.friendsCount;
+            document.querySelector('.stats p:nth-of-type(3) b').textContent = profile.profitFromFriends;
+        });
+    </script>
+
+</body>
+
+</html>
